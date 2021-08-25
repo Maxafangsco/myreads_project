@@ -10,18 +10,19 @@ class App extends Component {
   state = {
     currentlyReading: [],
     wantToRead: [],
-    read: []
+    read: [],
   }
   componentDidMount(){
    BooksAPI.getAll().then((books)=>{
             let wantToRead = [];
             let read = [];
             let booksCurrentlyReading = [];
+           
      
-     books.forEach(function(val){
+     books.forEach((val) =>{
      	switch(val.shelf){
           case "wantToRead" :
-            wantToRead.push(val);
+       wantToRead.push(val);
             break;
           case "currentlyReading" :
             booksCurrentlyReading.push(val);
@@ -76,8 +77,6 @@ class App extends Component {
       <div className="app">
          <Route path="/search" render={props=><SearchPage manageBookShelf={this.manageBookShelf} />}
        		/>
-         {/* <Route path="/book/:idBook" render={props=><BookPreview {...props} manageBookShelf={this.manageBookShelf} />}
-       		/> */}
          <Route path="/" exact render={props=><HomeList manageBookShelf={this.manageBookShelf}
        		currentlyReading={this.state.currentlyReading}
        		wantToRead={this.state.wantToRead}
