@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 class Book extends Component{
-  // constructor() {
-  //   super();
-  //   this.state = {
-  // 		bookShelf: "none"
-  // 	}
-  // }
+  
   state = {
 		bookShelf: "none"
 	}
@@ -15,6 +10,7 @@ class Book extends Component{
     	bookShelf: this.props.bookData.shelf
     });
   }
+
 
 changeStatus(event){
 	this.props.manageBookShelf(this.props.bookData, event.target.value);

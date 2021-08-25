@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import CurrentlyReading from './CurrentlyReading'
-import WantToRead from './WantToRead'
-import Read from './Read'
+import Shelf from './Shelf'
+
 
 class HomeList extends Component{
   
@@ -15,9 +14,10 @@ class HomeList extends Component{
             </div>
            <div className="list-books-content">
           		<div>
-                  <CurrentlyReading manageBookShelf={this.props.manageBookShelf} booksList={this.props.currentlyReading} />
-                  <WantToRead  manageBookShelf={this.props.manageBookShelf} booksList={this.props.wantToRead} />
-                  <Read manageBookShelf={this.props.manageBookShelf} booksList={this.props.read} />
+                  <Shelf manageBookShelf={this.props.manageBookShelf} title={"Currently Reading"} booksList={this.props.currentlyReading}/>
+                  <Shelf manageBookShelf={this.props.manageBookShelf} title={"Want to read"} booksList={this.props.wantToRead}/>
+                  <Shelf manageBookShelf={this.props.manageBookShelf} title={"Read"} booksList={this.props.read} />
+
            		</div>
            </div>
             <div className="open-search">

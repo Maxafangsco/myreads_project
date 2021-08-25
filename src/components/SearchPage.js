@@ -5,25 +5,27 @@ import * as BooksAPI from '../BooksAPI'
 class SearchPage extends Component{
   
   state = {
+    query:'',
   	booksAnswer: [],
     noneResult: false
   }
   
   search(event){
-    if(event.target.value.length===0)
+    const query = event.target.value;
+    if(query.length===0)
     	this.setState({
 			booksAnswer: [],
 			noneResult: false
 		})
     	
-    BooksAPI.search(event.target.value, 5).then((result)=>{
+    BooksAPI.search(query.trim(), 20).then((result)=>{
     	let noneResult = false;
 		if(result.error){
     		noneResult = true;
     		result = [];
   			}
-//any another method? BooksAPI search doesn't have shelf data
-var promises = [];
+
+let promises = [];
 result.forEach((elem, key)=>{
 	promises.push(
     	BooksAPI.get(elem.id).then((data)=>{
@@ -67,6 +69,23 @@ Promise.all(promises).then(()=>{
 				</ol>
 				<p className={(!this.state.noneResult ? "hideResult": "")}>No results</p>
             </div>
+
+                {/* <div className="search-books-results">
+                  {JSON.stringify(this.booksAnswer) !== '{}' && (
+                          <ol className={"books-grid"}>
+                                  {this.state.booksAnswer.map((value)=>(
+                                    <li key={value.id}>
+                                      <Book manageBookShelf={this.props.manageBookShelf} bookData={value} />
+                                    </li>
+                                    ))}
+                          </ol>
+                  )}
+                  {this.noneResult === true && (
+                    <h3>Search did not return any books. Please try again!</h3>
+                  )}
+            </div> */}
+
+
           </div>
         )
     }

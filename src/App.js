@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import { Route } from 'react-router-dom';
 import SearchPage from './components/SearchPage';
 import HomeList from './components/HomeList';
-// import BookPreview from './components/BookPreview';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 
