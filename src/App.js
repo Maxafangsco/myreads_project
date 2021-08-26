@@ -1,27 +1,23 @@
-import React,{Component} from 'react';
-import { Route } from 'react-router-dom';
-import SearchPage from './components/SearchPage';
-import HomeList from './components/HomeList';
-import * as BooksAPI from './BooksAPI';
-import './App.css';
+import React from 'react'
+import { Route } from 'react-router-dom'
+import SearchPage from './components/SearchPage'
+import HomeList from './components/HomeList'
+import BookPreview from './components/BookPreview'
+import * as BooksAPI from './BooksAPI'
+import './App.css'
 
-class App extends Component {
-  state = {
-    currentlyReading: [],
-    wantToRead: [],
-    read: [],
-  }
+class BooksApp extends React.Component {
+
   componentDidMount(){
    BooksAPI.getAll().then((books)=>{
             let wantToRead = [];
             let read = [];
             let booksCurrentlyReading = [];
-           
      
-     books.forEach((val) =>{
+     books.forEach(function(val){
      	switch(val.shelf){
           case "wantToRead" :
-       wantToRead.push(val);
+            wantToRead.push(val);
             break;
           case "currentlyReading" :
             booksCurrentlyReading.push(val);
@@ -71,19 +67,27 @@ class App extends Component {
           });
         });
   }
+  
+  state = {
+    currentlyReading: [],
+    wantToRead: [],
+    read: []
+  }
   render() {
     return (
       <div className="app">
+         <Route path="/search" render={props=><SearchPage manageBookShelf={this.manageBookShelf} />}
+       		/>
+         <Route path="/book/:idBook" render={props=><BookPreview {...props} manageBookShelf={this.manageBookShelf} />}
+       		/>
          <Route path="/" exact render={props=><HomeList manageBookShelf={this.manageBookShelf}
        		currentlyReading={this.state.currentlyReading}
        		wantToRead={this.state.wantToRead}
        		read={this.state.read}/>} 
        		/>
-
-          <Route path="/search" render={props=><SearchPage manageBookShelf={this.manageBookShelf} />}
-       		/>
       </div>
     )
   }
 }
-export default App;
+
+export default BooksApp

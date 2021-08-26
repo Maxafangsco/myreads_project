@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 class Book extends Component{
   
+  constructor() {
+    super();
+    this.state = {
+  		bookShelf: "none"
+  	}
+  }
   state = {
 		bookShelf: "none"
 	}
@@ -11,7 +18,6 @@ class Book extends Component{
     });
   }
 
-
 changeStatus(event){
 	this.props.manageBookShelf(this.props.bookData, event.target.value);
 }
@@ -20,16 +26,10 @@ changeStatus(event){
         return (
         <div className="book">
                           <div className="book-top">
-                            <div 
-                            className="book-cover"
-                                style={{
-                                  width: 128,
-                                  height: 193,
-                                  backgroundImage: `url(${this.props.bookData.imageLinks &&
-                                    this.props.bookData.imageLinks.thumbnail})`,
-                                }}
-                            >
-						              	</div>
+<Link to={"/book/"+this.props.bookData.id}>
+                            <div className="book-cover" style={{backgroundImage: `url("${this.props.bookData.imageLinks.thumbnail}")` }}>
+							</div>
+          </Link>
                             <div className="book-shelf-changer">
 								<select value={this.state.bookShelf} onChange={(event)=>this.changeStatus(event)}>
                                 <option value="none" disabled>Move to...</option>
@@ -46,4 +46,4 @@ changeStatus(event){
         )
     }
 }
-export default Book;
+export default Book

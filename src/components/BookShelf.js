@@ -19,4 +19,4 @@ class BookShelf extends Component{
         )
     }
 }
-export default BookShelf;
+export default BookShelf
