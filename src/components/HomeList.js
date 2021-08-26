@@ -14,10 +14,10 @@ class HomeList extends Component{
             </div>
            <div className="list-books-content">
           		<div>
+              {/* {  console.log(this.props)} */}
                   <Shelf manageBookShelf={this.props.manageBookShelf} title={"Currently Reading"} booksList={this.props.currentlyReading}/>
                   <Shelf manageBookShelf={this.props.manageBookShelf} title={"Want to read"} booksList={this.props.wantToRead}/>
                   <Shelf manageBookShelf={this.props.manageBookShelf} title={"Read"} booksList={this.props.read} />
-
            		</div>
            </div>
             <div className="open-search">

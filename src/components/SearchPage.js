@@ -69,23 +69,6 @@ Promise.all(promises).then(()=>{
 				</ol>
 				<p className={(!this.state.noneResult ? "hideResult": "")}>No results</p>
             </div>
-
-                {/* <div className="search-books-results">
-                  {JSON.stringify(this.booksAnswer) !== '{}' && (
-                          <ol className={"books-grid"}>
-                                  {this.state.booksAnswer.map((value)=>(
-                                    <li key={value.id}>
-                                      <Book manageBookShelf={this.props.manageBookShelf} bookData={value} />
-                                    </li>
-                                    ))}
-                          </ol>
-                  )}
-                  {this.noneResult === true && (
-                    <h3>Search did not return any books. Please try again!</h3>
-                  )}
-            </div> */}
-
-
           </div>
         )
     }

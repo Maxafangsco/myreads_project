@@ -74,12 +74,13 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-         <Route path="/search" render={props=><SearchPage manageBookShelf={this.manageBookShelf} />}
-       		/>
          <Route path="/" exact render={props=><HomeList manageBookShelf={this.manageBookShelf}
        		currentlyReading={this.state.currentlyReading}
        		wantToRead={this.state.wantToRead}
        		read={this.state.read}/>} 
+       		/>
+
+          <Route path="/search" render={props=><SearchPage manageBookShelf={this.manageBookShelf} />}
        		/>
       </div>
     )
