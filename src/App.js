@@ -8,7 +8,7 @@ import './App.css'
 
 class BooksApp extends React.Component {
 
-  componentDidMount(){
+   componentDidMount(){
    BooksAPI.getAll().then((books)=>{
             let wantToRead = [];
             let read = [];

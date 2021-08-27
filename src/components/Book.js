@@ -23,12 +23,16 @@ changeStatus(event){
 }
   
     render (){
+
+      
         return (
         <div className="book">
                           <div className="book-top">
 <Link to={"/book/"+this.props.bookData.id}>
-                            <div className="book-cover" style={{backgroundImage: `url("${this.props.bookData.imageLinks.thumbnail}")` }}>
-							</div>
+<div className="book-cover" style={{ width: 128, height: 193,
+                        backgroundImage: (this.props.bookData.imageLinks) ? 
+                        `url(${this.props.bookData.imageLinks.thumbnail})`
+                        : `url(${'icons/no_image_available'})` }}></div>
           </Link>
                             <div className="book-shelf-changer">
 								<select value={this.state.bookShelf} onChange={(event)=>this.changeStatus(event)}>

@@ -57,7 +57,7 @@ Promise.all(promises).then(()=>{
                       	</li>
         			))}
 				</ol>
-				<p className={(!this.state.noneResult ? "hideResult": "")}>No results :C</p>
+				<p className={(!this.state.noneResult ? "hideResult": "")}>No results </p>
             </div>
           </div>
         )
