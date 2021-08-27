@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 class Book extends Component{
   
   constructor() {
@@ -28,12 +27,11 @@ changeStatus(event){
         return (
         <div className="book">
                           <div className="book-top">
-<Link to={"/book/"+this.props.bookData.id}>
 <div className="book-cover" style={{ width: 128, height: 193,
                         backgroundImage: (this.props.bookData.imageLinks) ? 
                         `url(${this.props.bookData.imageLinks.thumbnail})`
                         : `url(${'icons/no_image_available'})` }}></div>
-          </Link>
+  
                             <div className="book-shelf-changer">
 								<select value={this.state.bookShelf} onChange={(event)=>this.changeStatus(event)}>
                                 <option value="none" disabled>Move to...</option>

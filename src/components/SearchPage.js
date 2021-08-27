@@ -3,26 +3,23 @@ import { Link } from 'react-router-dom'
 import Book from './Book'
 import * as BooksAPI from '../BooksAPI'
 class SearchPage extends Component{
-  
   state = {
   	booksAnswer: [],
     noneResult: false
   }
-  
   search(event){
     if(event.target.value.length===0)
     	this.setState({
 			booksAnswer: [],
 			noneResult: false
-		})
-    	
+		    })
     BooksAPI.search(event.target.value, 5).then((result)=>{
     	let noneResult = false;
-		if(result.error){
+		if(!result || result.error){
     		noneResult = true;
     		result = [];
   			}
-var promises = [];
+let promises = [];
 result.forEach((elem, key)=>{
 	promises.push(
     	BooksAPI.get(elem.id).then((data)=>{
@@ -38,7 +35,6 @@ Promise.all(promises).then(()=>{
 });
     })
   }
-  
     render (){
         return (
             <div className="search-books">
@@ -46,7 +42,6 @@ Promise.all(promises).then(()=>{
           	  <Link className="close-search" to="/">Close</Link>
               <div className="search-books-input-wrapper">
                 <input type="text" placeholder="Search by title or author" onChange={(event)=>this.search(event)}/>
-
               </div>
             </div>
             <div className="search-books-results">

@@ -2,7 +2,6 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import SearchPage from './components/SearchPage'
 import HomeList from './components/HomeList'
-import BookPreview from './components/BookPreview'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
@@ -77,8 +76,6 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
          <Route path="/search" render={props=><SearchPage manageBookShelf={this.manageBookShelf} />}
-       		/>
-         <Route path="/book/:idBook" render={props=><BookPreview {...props} manageBookShelf={this.manageBookShelf} />}
        		/>
          <Route path="/" exact render={props=><HomeList manageBookShelf={this.manageBookShelf}
        		currentlyReading={this.state.currentlyReading}
